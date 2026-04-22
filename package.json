@@ -1,0 +1,69 @@
+{
+  "name": "threshold-hook",
+  "version": "0.1.0",
+  "description": "Small threshold-based webhook alerts for cron, CI, and custom workflows. Zero runtime dependencies.",
+  "license": "MIT",
+  "author": "Capped (https://getcapped.app)",
+  "homepage": "https://getcapped.app/open-source/threshold-hook",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sibbe1337/threshold-hook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sibbe1337/threshold-hook/issues"
+  },
+  "keywords": [
+    "threshold",
+    "alert",
+    "webhook",
+    "cron",
+    "ci",
+    "slack",
+    "discord",
+    "guardrails",
+    "automation",
+    "cli"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "threshold-hook": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run verify",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify": "npm run typecheck && npm test && npm run build && npm pack --dry-run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false
+}
