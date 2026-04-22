@@ -1,6 +1,6 @@
 {
   "name": "threshold-hook",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Small threshold-based webhook alerts for cron, CI, and custom workflows. Zero runtime dependencies.",
   "license": "MIT",
   "author": "Capped (https://getcapped.app)",

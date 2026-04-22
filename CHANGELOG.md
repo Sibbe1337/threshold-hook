@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.2 - 2026-04-22
+
+- fixed `npx threshold-hook --help` and other direct CLI invocations when npm runs the command through a symlinked bin path
+- added a regression test for symlink-based direct invocation
+
+## 0.1.1 - 2026-04-22
+
+- added repository and issue metadata to the published package
+- aligned the npm package with the public GitHub repository
+
 ## 0.1.0 - 2026-04-22
 
 Initial release.

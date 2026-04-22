@@ -1,6 +1,9 @@
+import { symlinkSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
 import { describe, expect, it } from "vitest";
 
-import { runCli } from "../src/cli.js";
+import { isDirectInvocation, runCli } from "../src/cli.js";
 import { MemoryStream, makeTempDir } from "./helpers.js";
 
 describe("runCli", () => {
@@ -74,5 +77,14 @@ describe("runCli", () => {
     );
 
     expect(exitCode).toBe(3);
+  });
+
+  it("treats a symlinked bin path as a direct invocation", () => {
+    const cwd = makeTempDir("threshold-hook-cli-symlink");
+    const cliPath = fileURLToPath(new URL("../src/cli.ts", import.meta.url));
+    const symlinkPath = `${cwd}/threshold-hook`;
+    symlinkSync(cliPath, symlinkPath);
+
+    expect(isDirectInvocation(new URL("../src/cli.ts", import.meta.url).href, symlinkPath)).toBe(true);
   });
 });
